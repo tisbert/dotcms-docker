@@ -1,0 +1,38 @@
+version: "2"
+services:
+  dotcms-uat:
+    build: ./uat
+    depends_on:
+      - db-uat
+    ports:
+      - "8080:8080"
+  db-prod:
+    image: mysql:5.7
+    volumes:
+      - /Users/amitevski/code/dummy-cms/prod/data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: dotcms
+      MYSQL_DATABASE: dotcms
+      MYSQL_USER: dotcms
+      MYSQL_PASSWORD: dotcms
+      MYSQL_DATABASE: dotcms2
+  db-uat:
+    image: mysql:5.7
+    volumes:
+      - /Users/amitevski/code/dummy-cms/uat/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: dotcms
+      MYSQL_DATABASE: dotcms
+      MYSQL_USER: dotcms
+      MYSQL_PASSWORD: dotcms
+      MYSQL_DATABASE: dotcms2
+  dotcms-prod:
+    build: ./prod
+    depends_on:
+      - db-prod
+    ports:
+      - "8081:8080"

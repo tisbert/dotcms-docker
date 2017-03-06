@@ -17,7 +17,6 @@ services:
       MYSQL_DATABASE: dotcms
       MYSQL_USER: dotcms
       MYSQL_PASSWORD: dotcms
-      MYSQL_DATABASE: dotcms2
   db-uat:
     image: mysql:5.7
     volumes:
@@ -29,7 +28,6 @@ services:
       MYSQL_DATABASE: dotcms
       MYSQL_USER: dotcms
       MYSQL_PASSWORD: dotcms
-      MYSQL_DATABASE: dotcms2
   dotcms-prod:
     build: ./prod
     depends_on:
